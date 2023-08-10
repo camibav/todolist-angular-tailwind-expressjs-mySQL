@@ -1,0 +1,50 @@
+<div class="flex justify-center flex-col w-[80vh]">
+
+  <table class="w-[100%] overflow-hidden rounded-lg shadow-lg bg-white">
+    <thead>
+      <tr>
+        <th class="py-4 px-6 bg-gray-700 text-white font-bold uppercase w-1/3">
+          Tarea
+        </th>
+        <th class="py-4 px-6 bg-gray-700 text-white font-bold uppercase w-1/5">
+          Fecha
+        </th>
+        <th class="py-4 px-6 bg-gray-700 text-white font-bold uppercase w-1/6">
+          Acciones
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class="transition-all hover:bg-gray-100"
+        *ngFor="let tarea of Realizarpagination()"
+      >
+        <td class="py-3 px-6 text-center w-1/3">{{ tarea.tarea }}</td>
+        <td class="py-3 px-6 text-center w-1/3">{{ tarea.fecha }}</td>
+        <td class="py-3 px-6 text-center w-1/2">
+          <span
+            class="text-green-500 hover:text-green-700 cursor-pointer mx-2"
+            title="Completar tarea" (click)="eliminarTarea(tarea.id)"
+          >
+            <mat-icon>check</mat-icon>
+          </span>
+
+          <span
+            class="text-blue-500 hover:text-blue-700 cursor-pointer mx-2"
+            title="Editar tarea" (click)="editarTarea(tarea.id)"
+          >
+            <mat-icon class="mat-18">edit</mat-icon>
+          </span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <div class="flex justify-center mt-4">
+    <span *ngFor="let pageIndex of obtenerTotalPag(), let i = index" class="mr-1 transform transition-all duration-500 ease-in-out hover:scale-110">
+      <button (click)="cambioDePagina(i+1)" class="border-[1px] text-black border-gray-500 py-1 px-2 mx-[1px] text-[1rem] hover:bg-blue-500 rounded-md hover:text-white shadow-md hover:shadow-lg active:scale-90 transition duration-150 ease-in-out">
+        {{ pageIndex +1 }}
+      </button>
+    </span>
+  </div>
+</div>

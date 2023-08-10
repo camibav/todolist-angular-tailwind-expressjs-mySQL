@@ -1,0 +1,34 @@
+<div  class="flex justify-center relative w-[40vh] ">
+
+
+  <div *ngIf="showNotification" class="absolute bottom-[-40%] p-4 m-4 bg-green-500 text-white rounded-lg shadow-lg flex items-center  ">
+    <svg class="w-6 h-6 mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M20.29 6.879l-9.295 9.296-4.295-4.296-1.414 1.415 5.71 5.712 10.708-10.712z"/>
+    </svg>
+    <span>Tarea creada con éxito.</span>
+
+  </div>
+  <form  [formGroup]="taskForm" (ngSubmit)=" onSubmit()" class="w-full p-6 bg-white shadow-md rounded-lg flex flex-col items-center">
+    <div class="mb-4 w-full">
+      <label for="tarea" class="block text-white bg-gray-700 rounded p-1 font-bold mb-2">Tarea:</label>
+      <textarea type="text" id="task" formControlName="task" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+      </textarea>
+        <div *ngIf="validation" class="text-red-500 mt-1">
+      La tarea es requerida.
+    </div>
+    </div>
+
+    <div class="mb-4 w-full">
+      <label for="fecha" class="block rounded text-white font-bold  p-1 mb-2 bg-gray-700">Fecha:</label>
+      <input type="date" id="date" formControlName="date" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+      <div *ngIf="validation" class="text-red-500 mt-1">La fecha es requerida.</div>
+    </div>
+
+    <button type="submit" class="px-4 py-2 border-2 border-black w-[60%] text-black rounded-lg hover:bg-blue-500 hover:text-white focus:outline-none">
+      Agregar Tarea
+    </button>
+
+
+  </form>
+
+</div>
